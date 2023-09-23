@@ -72,6 +72,7 @@ in pkgs.dockerTools.buildLayeredImage
     name = "sphinx-builder";
     contents = [
       full-sphinx-env
+      pkgs.bash
     ];
     config = {
       Cmd = [ "${full-sphinx-env}/bin/sphinx-build" "--help" ];
