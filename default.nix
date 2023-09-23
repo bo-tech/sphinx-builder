@@ -61,6 +61,9 @@ let
     name = "full-sphinx-env";
     paths = [
       sphinx-env
+      pkgs.bash
+      pkgs.coreutils
+      pkgs.gnumake
     ] ++ (pkgs.lib.optionals withPdf [
       latex
       pkgs.ipafont
@@ -72,9 +75,8 @@ in pkgs.dockerTools.buildLayeredImage
     name = "sphinx-builder";
     contents = [
       full-sphinx-env
-      pkgs.bash
     ];
     config = {
-      Cmd = [ "${full-sphinx-env}/bin/sphinx-build" "--help" ];
+      Cmd = [ "${pkgs.bash}/bin/bash" ];
     };
   }
