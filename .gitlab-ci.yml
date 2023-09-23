@@ -1,0 +1,16 @@
+---
+build-sphinx-builder-image:
+  stage: build
+  image:
+    name: nixos/nix:latest@sha256:ea010add01de314c23def4f333c2881ac5dda92031aaf5260a4d9491af401179
+  before_script:
+    - nix-env -iA nixpkgs.skopeo
+    # Skopeo needs the container policy to be available
+    - mkdir /etc/containers
+    - ln -s ~/.nix-profile/etc/containers/default-policy.json /etc/containers/policy.json
+  script:
+    - nix-build default.nix
+    - skopeo login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - skopeo copy docker-archive:./result docker://${CI_REGISTRY_IMAGE}/sphinx-builder:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
