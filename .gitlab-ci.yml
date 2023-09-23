@@ -9,8 +9,10 @@ build-sphinx-builder-image:
     - mkdir /etc/containers
     - ln -s ~/.nix-profile/etc/containers/default-policy.json /etc/containers/policy.json
   script:
+    - IMAGE_TAG=${CI_COMMIT_TAG-latest}
     - nix-build default.nix
     - skopeo login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
-    - skopeo copy docker-archive:./result docker://${CI_REGISTRY_IMAGE}/sphinx-builder:latest
+    - skopeo copy docker-archive:./result docker://${CI_REGISTRY_IMAGE}/sphinx-builder:${IMAGE_TAG}
   rules:
+    - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
