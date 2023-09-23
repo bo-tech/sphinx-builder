@@ -14,13 +14,16 @@ let
   in pkgs.python3.override { inherit packageOverrides; self = python; };
 
   sphinx-env = python.withPackages(ps: [
-    ps.sphinx-mdinclude
+    ps.myst-parser
     ps.reportlab
     ps.sphinx
     ps.sphinxcontrib-blockdiag
     ps.sphinxcontrib-actdiag
     ps.sphinxcontrib-seqdiag
     ps.sphinx-autobuild
+
+    # TODO: deprecated below, remove with 1.0.0
+    ps.sphinx-mdinclude
   ]);
 
   # Hand picked texlive setup. It is fairly minimal and just enough for the
