@@ -21,6 +21,7 @@ let
     ps.sphinxcontrib-actdiag
     ps.sphinxcontrib-seqdiag
     ps.sphinx-autobuild
+    ps.sphinx-book-theme
 
     # TODO: deprecated below, remove with 1.0.0
     ps.sphinx-mdinclude
