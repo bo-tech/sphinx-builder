@@ -9,6 +9,7 @@
       in
       {
         packages = {
+          default = packages.sphinx-env;
           inherit (pkgs)
             skopeo;
         } // packages;
