@@ -8,7 +8,10 @@
         packages = import ./packages.nix { inherit pkgs; };
       in
       {
-        inherit packages;
+        packages = {
+          inherit (pkgs)
+            skopeo;
+        } // packages;
       }
     );
 }
