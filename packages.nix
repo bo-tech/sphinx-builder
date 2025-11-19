@@ -42,6 +42,7 @@ rec {
       zapfding
 
       # packages
+      booktabs
       capt-of
       cmap
       fancyvrb
@@ -54,7 +55,8 @@ rec {
       titlesec
       upquote
       varwidth
-      wrapfig;
+      wrapfig
+      xcolor;
   };
 
   full-sphinx-env = pkgs.buildEnv {
