@@ -2,7 +2,7 @@
 build-sphinx-builder-image:
   stage: build
   image:
-    name: nixos/nix:latest@sha256:ea010add01de314c23def4f333c2881ac5dda92031aaf5260a4d9491af401179
+    name: docker.nix-community.org/nixpkgs/nix-flakes:latest@sha256:95bce4317c15dfab3babac5a6d19d3ed41e31a02a8aaf3d4f6639778cb763b0a
   before_script:
     - nix-env -iA nixpkgs.skopeo
     # Skopeo needs the container policy to be available
@@ -10,7 +10,7 @@ build-sphinx-builder-image:
     - ln -s ~/.nix-profile/etc/containers/default-policy.json /etc/containers/policy.json
   script:
     - IMAGE_TAG=${CI_COMMIT_TAG-latest}
-    - nix-build default.nix
+    - nix build .#container-image
     - skopeo login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
     - skopeo copy docker-archive:./result docker://${CI_REGISTRY_IMAGE}/sphinx-builder:${IMAGE_TAG}
   rules:
