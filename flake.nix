@@ -5,7 +5,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        packages = import ./packages.nix { inherit pkgs; };
+        packages = import ./packages.nix { inherit pkgs; withPdf = true; };
       in
       {
         packages = {
