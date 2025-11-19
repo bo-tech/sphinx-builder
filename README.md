@@ -7,4 +7,4 @@ A container image to provide the Sphinx tooling for building documentation.
 
 ## Contact
 
-- joh@bo-tech.de
+- <joh@bo-tech.de>
