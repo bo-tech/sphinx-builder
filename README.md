@@ -1,6 +1,7 @@
 # Sphinx Builder
 
-A container image to provide the Sphinx tooling for building documentation.
+A container image that bundles Sphinx, common extensions, and build tooling so
+teams can produce identical documentation builds locally and in CI.
 
 
 ## Status - Experimental
