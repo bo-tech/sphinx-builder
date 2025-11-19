@@ -5,6 +5,7 @@ build-sphinx-builder-image:
     name: docker.nix-community.org/nixpkgs/nix-flakes:latest@sha256:95bce4317c15dfab3babac5a6d19d3ed41e31a02a8aaf3d4f6639778cb763b0a
   before_script:
     - nix profile install .#skopeo
+    - mkdir -p /var/tmp
     # Skopeo needs the container policy to be available
     - mkdir /etc/containers
     - ln -s ~/.nix-profile/etc/containers/default-policy.json /etc/containers/policy.json
