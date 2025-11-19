@@ -21,9 +21,6 @@ rec {
     ps.sphinxcontrib-seqdiag
     ps.sphinx-autobuild
     ps.sphinx-book-theme
-
-    # TODO: deprecated below, remove with 1.0.0
-    ps.sphinx-mdinclude
   ]);
 
   # Hand picked texlive setup. It is fairly minimal and just enough for the
