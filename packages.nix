@@ -65,6 +65,7 @@ rec {
       sphinx-env
       pkgs.bash
       pkgs.coreutils
+      pkgs.findutils
       pkgs.gnumake
     ] ++ (pkgs.lib.optionals withPdf [
       latex
