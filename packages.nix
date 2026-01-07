@@ -18,6 +18,7 @@ rec {
     ps.sphinx
     ps.sphinxcontrib-blockdiag
     ps.sphinxcontrib-actdiag
+    ps.sphinxcontrib-mermaid
     ps.sphinxcontrib-seqdiag
     ps.sphinx-autobuild
     ps.sphinx-book-theme
