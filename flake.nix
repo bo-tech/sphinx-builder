@@ -13,6 +13,10 @@
           inherit (pkgs)
             skopeo;
         } // packages;
+
+        devShells.default = pkgs.mkShell {
+          packages = [ packages.full-sphinx-env ];
+        };
       }
     );
 }
