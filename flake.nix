@@ -6,6 +6,14 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         packages = import ./packages.nix { inherit pkgs; withPdf = true; };
+
+        makeRunner = pkgs.writeShellApplication {
+          name = "sphinx-make";
+          runtimeInputs = [ packages.full-sphinx-env ];
+          text = ''
+            exec make "$@"
+          '';
+        };
       in
       {
         packages = {
@@ -17,6 +25,8 @@
         devShells.default = pkgs.mkShell {
           packages = [ packages.full-sphinx-env ];
         };
+
+        apps.default = flake-utils.lib.mkApp { drv = makeRunner; };
       }
     );
 }
