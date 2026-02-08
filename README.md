@@ -4,7 +4,11 @@ A container image that bundles Sphinx, common extensions, and build tooling so
 teams can produce identical documentation builds locally and in CI.
 
 
-## Status - Experimental
+## Status - Stable
+
+I am using this for most of my repositories which build Sphinx based
+documentation.
+
 
 ## Example Usage
 
