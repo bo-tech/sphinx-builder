@@ -14,6 +14,14 @@
             exec make "$@"
           '';
         };
+
+        watchRunner = pkgs.writeShellApplication {
+          name = "sphinx-watch";
+          runtimeInputs = [ packages.sphinx-env ];
+          text = ''
+            exec sphinx-autobuild . _build/html "$@"
+          '';
+        };
       in
       {
         packages = {
@@ -26,7 +34,10 @@
           packages = [ packages.full-sphinx-env ];
         };
 
-        apps.default = flake-utils.lib.mkApp { drv = makeRunner; };
+        apps = {
+          default = flake-utils.lib.mkApp { drv = makeRunner; };
+          watch = flake-utils.lib.mkApp { drv = watchRunner; };
+        };
       }
     );
 }
