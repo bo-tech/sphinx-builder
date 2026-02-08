@@ -19,6 +19,14 @@ nix shell github:bo-tech/sphinx-builder
 nix shell git+https://gitlab.gitlab.k0s.lab.bo-tech.de/bv/images/sphinx-builder.git
 ```
 
+## Related Projects
+
+- [Sphinx](https://www.sphinx-doc.org/) - Documentation generator
+- [MyST Parser](https://myst-parser.readthedocs.io/) - Markdown support for Sphinx
+- [Default repository template](https://github.com/bo-tech/default-repository) -
+  Repository template with Sphinx docs setup
+
+
 ## Contact
 
 - <joh@bo-tech.de>
